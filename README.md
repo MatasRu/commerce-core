@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+In the server directory, you can run:
+
+### `node app`
+
+Runs the Node.js server. To get products from API and POST form data.
+Server runs on http://localhost:3001 .
+
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
