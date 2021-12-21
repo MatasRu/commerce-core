@@ -7,9 +7,14 @@ import { ReactComponent as Guarantee } from "../../../assets/svg/guarantee.svg";
 import { useQuery } from "../../../styles/breakpoints";
 
 export default function Summary({ products, getSelectedProduct }) {
-  const { isMobile, isDesktop } = useQuery();
+  const { isLaptop, isDesktop } = useQuery();
   return (
-    <SummaryWrapper  padding={isDesktop ? "0 0 0 3rem" : "0 0 0 5.875rem"} width={isDesktop ? "20rem" : "23.375rem"} flexDirection="column">
+    <SummaryWrapper
+      padding={isDesktop ? "0" : "0 0 0 5.875rem"}
+      margin={isLaptop ? "0 1rem" : "5.5rem 0"}
+      width={isLaptop ? "80%" : "23.375rem"}
+      flexDirection="column"
+    >
       <FlexWrapper alignItems="center">
         <Image src={summaryImage} />
         <FlexWrapper margin="0 0 0 0.5rem">

@@ -93,8 +93,11 @@ export default function PaymentShipping() {
     fetch("http://localhost:3001/api/import", options)
       .then((res) => res.json())
       .then((data) => {
-        setError(data.error);
-        console.log(data);
+        if (!data.success) {
+          setError(data.message);
+        } else {
+          setError(data.message);
+        }
       });
   }
 
@@ -125,7 +128,6 @@ export default function PaymentShipping() {
               onChange={(e) => inputFill(e)}
             />
           </FlexWrapper>
-          <ErrorMsg>{getError}</ErrorMsg>
         </FlexWrapper>
         <FlexWrapper margin="1rem 0 0 0" flexDirection="column">
           <HeadingText>Shipping Address</HeadingText>
@@ -171,7 +173,6 @@ export default function PaymentShipping() {
                   )
                 ].states.map((item, index) => (
                   <option key={index} value={item}>
-                    {" "}
                     {item}
                   </option>
                 ))}
@@ -189,7 +190,7 @@ export default function PaymentShipping() {
             <CreditCardBox margin="1rem 0 0 0" flexDirection="column">
               <FlexWrapper padding="1rem" justifyContent="space-between">
                 <FlexWrapper>
-                  <Radio />{" "}
+                  <Radio />
                   <TextWrapper margin="0 0 0 0.5rem">Credit Card</TextWrapper>
                 </FlexWrapper>
                 <Image maxWidth="15rem" src={cards} />
@@ -243,6 +244,7 @@ export default function PaymentShipping() {
             </FlexWrapper>
           </FlexWrapper>
         </FlexWrapper>
+        <ErrorMsg>{getError}</ErrorMsg>
       </Box>
     </FlexWrapper>
   );
@@ -312,4 +314,5 @@ const ErrorMsg = styled(TextWrapper)`
   color: red;
   font-size: 1.125rem;
   font-weight: 500;
+  text-align: center;
 `;

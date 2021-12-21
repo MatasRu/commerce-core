@@ -21,9 +21,14 @@ export default function Checkout() {
   }, []);
 
   return (
-    <FlexWrapper flexDirection={isLaptop ? "column" : "row"}>
+    <FlexWrapper
+      width="100%"
+      height="100%"
+      alignItems={isLaptop ? "center" : ""}
+      flexDirection={isLaptop ? "column" : "row"}
+    >
       <CheckoutWrapper
-        width={isDesktop ? "45rem" : "53.25rem"}
+        width={isDesktop ? "100%" : "53.25rem"}
         maxWidth="53.25rem"
         alignItems="center"
         flexDirection="column"
@@ -35,16 +40,10 @@ export default function Checkout() {
         />
         <PaymentShipping />
       </CheckoutWrapper>
-      <FlexWrapper
-        width="36.8125rem"
-        maxWidth="36.8125rem"
-        flexDirection="column"
-      >
-        <Summary
-          products={getProductsFromAPI}
-          getSelectedProduct={getSelectedProduct}
-        />
-      </FlexWrapper>
+      <Summary
+        products={getProductsFromAPI}
+        getSelectedProduct={getSelectedProduct}
+      />
     </FlexWrapper>
   );
 }
